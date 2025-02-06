@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Primeiro Programa...</title>
+    <title>DETRAN</title>
     <style>
         @charset "UTF-8";
 
@@ -45,53 +45,34 @@
     </style>
 </head>
 <body>
-    <h1>Iniciando os estudos com DOM</h1>
-    <p>Aqui vai o resultado</p>
-    <p>Apredendo a usar o <strong> DOM</strong> no JS</p>
-    <div id="msg">Clique em mim</div>
-    <div name="nmsg">Div com Name</div>
-    <div class="cmsg">Div com Classe</div>
+    <h1>Sistema de Multas</h1>
+    
+    <p>
+        Velocidade do carro: <input type="number" name="txtvel" id="txtvel"> Km/h
+        <input type="button" value="Verificar" onclick="calcular()">
+    </p>
+
+    <div id="res">
+
+    </div>
+
     <script>
-        /* por tag <div> <p> */
-        var p1 = document.getElementsByTagName('p')[1]
-        corpo = window.document.body
-        document.write(p1.innerText)
-        document.write(p1.innerHTML)
-        p1.style.color = 'blue'
-        p1.style.fontSize = '2em'
-        corpo.style.background = 'orange'
+        function calcular() {
+            var txtv = document.querySelector('input#txtvel') 
+            var res = document.querySelector('div#res') 
+            var vel = Number(txtvel.value)
+            res.innerHTML = `<p>Sua Velocidade atual é de <strong> ${vel}km/h</strong></p>`
+            
 
-        var d = window.document.querySelector('div.msg')
-        var d = window.document.querySelector('div.msg')
 
-        /* por ID */
-        var idmsg = document.getElementById('msg')
-        idmsg.style.background = 'green'
-        /* posso usar assim para trocar o conteudo do elemmento */
-        idmsg.innerText = 'Estou alterando o conteudo da Mensagem'
-        /* ou assim */
-        window.document.getElementById('msg').innerText = 'OI, alterei o texto novamente'
+            if (vel > 60) {
+                res.innerHTML += `<p> Você está <strong> MULTADO </strong> por excesso de velocidade</p> `
+            } else {
+                res.innerHTML += `<p>Boa Viagem</p>`
+            }
 
-        /* por name  alterado de ID para name*/
-        var namemsg = window.document.getElementsByName('nmsg')[0]
-        document.write(namemsg.innerText)    
-        namemsg.innerText = 'Alterei a DIV com Name'
-
-        /* por Class */
-        var classmsg = window.document.getElementsByClassName('cmsg')[0]
-        document.write(classmsg.innerText)    
-        classmsg.innerText = 'Alterei a DIV com C L A S S E'
-
-        /* por seletor  id*/
-        var d = window.document.querySelector('div#msg')
-        document.write(d.innerText)    
-        d.innerText = 'Alterei a DIV msg com queryselector'  
-        
-         /* por seletor  class*/
-         var d1 = window.document.querySelector('div.cmsg')
-        document.write(d1.innerText)    
-        d1.innerText = 'Alterei a DIV 1 msg com queryselector'
-
+            res.innerHTML += `<p> Dirija sempre com cinto de segurança!</p>`
+        }
     </script>
 </body>
 </html>
